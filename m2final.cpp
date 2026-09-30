@@ -30,44 +30,10 @@
 
 using namespace std;
 
-/*
- * Copyright 2019-2023 University of Toronto
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * Authors: Mario Badr, Sameh Attia, Tanner Young-Schultz and Vaughn Betz
- */
-
-/**
- * @file
- *
- * This example shows you how to create an application using the EZGL library.
- */
-
-//FUNCTION DECLARATIONS
-
-/**
- * Draw to the main canvas using the provided graphics object. Runs every time graphics are refreshed/image zooms or pans
- *
- * The graphics object expects that x and y values will be in the main canvas' world coordinate system.
- */
 void clearMap();
 void reDrawMap(ezgl::application *app);
 void draw_main_canvas(ezgl::renderer *g);
 
-/**
- * Initial Setup is a mandatory function for any EZGL application, and is run whenever a window is opened. 
- */
 void initial_setup(ezgl::application *application, bool new_window);
 void initializeIntersections();
 void initializePOIs();
@@ -76,11 +42,6 @@ void initializeStreetSegment_data();
 void initializeOSMFeatures();
 void initializePathnames();
 void initializeFont();
-/**
- * DRAWING HELPER FUNCTIONS
- * 
- * draw_main_canvas helper functions. Example functions that draw different things.
- */
 
 void draw_street_segment(ezgl::renderer *g, StreetSegmentIdx street_segment_id);
 void draw_all_street_segments(ezgl::renderer *g);
@@ -113,11 +74,7 @@ void setZoomLevel(double left, double right);
 string getOSMWayTagValue(OSMID OSMid, string key);
 
 
-/**
- * UI CALLBACK FUNCTIONS
- * 
- * These are example callback functions for the UI elements
- */
+// UI callback
 void highlight_intersection_cbk(GtkSwitch */*self*/, gboolean state, ezgl::application *application);
 void create_find_button_cbk(GtkWidget* /*widget*/, ezgl::application* app);
 void dialog_cbk(GtkDialog* self, gint response_id, ezgl::application* app);
@@ -126,25 +83,10 @@ void clear_button_cbk(GtkWidget* /*widget*/, ezgl::application* app);
 void nightModeSwitch_cbk(GtkSwitch */*self*/, gboolean state, ezgl::application *application);
 void display_icon_cbk(GtkSwitch */*self*/, gboolean state, ezgl::application *application);
 
-/**
- * EVENT CALLBACK FUNCTIONS
- * 
- * These functions run whenever their corresponding event (key press, mouse move, or mouse click) occurs.
- */
+// Event Callback
 void act_on_mouse_press(ezgl::application *application, GdkEventButton *event, double x, double y);
 
-
-/**
- * The start point of the program.
- *
- * This function initializes an ezgl application and runs it.
- *
- * @param argc The number of arguments provided.
- * @param argv The arguments as an array of c-strings.
- *
- * @return the exit status of the application run.
- */
-//STRUCTURES
+//structs
 
 struct Inter_data {
     ezgl::point2d xy_loc;
